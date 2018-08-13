@@ -7,5 +7,17 @@ defmodule GpGraphqlApiWeb.Router do
 
   scope "/api", GpGraphqlApiWeb do
     pipe_through :api
+
+    forward(
+      "/graphql",
+      schema: GpGraphqlApiWeb.Schema
+    )
+
+    if Mix.env() == :dev do
+      forward(
+        "/graphiql",
+        schema: SlackGraphqlApiWeb.Schema
+      )
+    end
   end
 end
