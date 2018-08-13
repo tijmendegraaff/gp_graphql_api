@@ -7,7 +7,11 @@ defmodule GpGraphqlApi.AccountsTest do
     alias GpGraphqlApi.Accounts.User
 
     @valid_attrs %{email: "some email", password_hash: "some password_hash", role: "some role"}
-    @update_attrs %{email: "some updated email", password_hash: "some updated password_hash", role: "some updated role"}
+    @update_attrs %{
+      email: "some updated email",
+      password_hash: "some updated password_hash",
+      role: "some updated role"
+    }
     @invalid_attrs %{email: nil, password_hash: nil, role: nil}
 
     def user_fixture(attrs \\ %{}) do

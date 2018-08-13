@@ -11,7 +11,7 @@ defmodule GpGraphqlApi.Application do
       # Start the Ecto repository
       supervisor(GpGraphqlApi.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(GpGraphqlApiWeb.Endpoint, []),
+      supervisor(GpGraphqlApiWeb.Endpoint, [])
       # Start your own worker by calling: GpGraphqlApi.Worker.start_link(arg1, arg2, arg3)
       # worker(GpGraphqlApi.Worker, [arg1, arg2, arg3]),
     ]
