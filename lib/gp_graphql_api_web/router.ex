@@ -5,19 +5,15 @@ defmodule GpGraphqlApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", GpGraphqlApiWeb do
+  scope "/api" do
     pipe_through :api
 
-    forward(
-      "/graphql",
+    forward "/graphql", Absinthe.Plug,
       schema: GpGraphqlApiWeb.Schema
-    )
-
+    
     if Mix.env() == :dev do
-      forward(
-        "/graphiql",
-        schema: SlackGraphqlApiWeb.Schema
-      )
+      forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: GpGraphqlApiWeb.Schema
     end
   end
 end
