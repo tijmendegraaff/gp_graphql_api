@@ -21,7 +21,8 @@ defmodule GpGraphqlApi.Accounts.User do
     |> cast(attrs, [:email, :role, :password, :password_confirmation])
     |> validate_required([:email, :password, :password_confirmation, :role])
     |> validate_format(:email, ~r/@/)
-    |> validate_length(:password, min: 6)
+    |> update_change(:email, &String.downcase(&1))
+    |> validate_length(:password, min: 6, max: 100)
     |> validate_confirmation(:password)
     |> unique_constraint(:email)
     |> hash_password
@@ -31,7 +32,7 @@ defmodule GpGraphqlApi.Accounts.User do
   defp hash_password(changeset) do
     case changeset do
     %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
-      put_change(changeset, :password_hash, password)
+      put_change(changeset, :password_hash, Comeonin.Argon2.hashpwsalt(password))
     _ ->
       changeset
     end
