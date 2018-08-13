@@ -9,6 +9,11 @@ config :gp_graphql_api, GpGraphqlApiWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+# Use less rounds to hash password while running tests
+config :argon2_elixir,
+  t_cost: 1,
+  m_cost: 8
+
 # Configure your database
 config :gp_graphql_api, GpGraphqlApi.Repo,
   adapter: Ecto.Adapters.Postgres,
