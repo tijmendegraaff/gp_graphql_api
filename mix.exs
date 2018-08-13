@@ -5,7 +5,7 @@ defmodule GpGraphqlApi.Mixfile do
     [
       app: :gp_graphql_api,
       version: "0.0.1",
-      elixir: "~> 1.4",
+      elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
@@ -38,7 +38,11 @@ defmodule GpGraphqlApi.Mixfile do
       {:phoenix_ecto, "~> 3.2"},
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:absinthe, "~> 1.4.13"},
+      {:absinthe_phoenix, "~> 1.4.3"},
+      {:absinthe_plug, "~> 1.4.5"},
+      {:absinthe_ecto, "~> 0.1.3"}
     ]
   end
 
